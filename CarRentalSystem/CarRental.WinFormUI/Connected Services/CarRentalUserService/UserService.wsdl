@@ -1,0 +1,347 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="Add">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="entity" type="tns:User" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="User">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="userID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="userName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="email" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="roleID" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Role" type="tns:Role" />
+          <s:element minOccurs="0" maxOccurs="1" name="UserInformation" type="tns:UserInformation" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Role">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="roleID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="roleName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="User" type="tns:ArrayOfUser" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfUser">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="User" nillable="true" type="tns:User" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="UserInformation">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="userID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="lastname" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="phoneNumber" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="RentalInformation" type="tns:ArrayOfRentalInformation" />
+          <s:element minOccurs="0" maxOccurs="1" name="User" type="tns:User" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfRentalInformation">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="RentalInformation" nillable="true" type="tns:RentalInformation" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="RentalInformation">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="rentalID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="userID" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="rentalDate" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="rentalPrice" nillable="true" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="carID" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="companyID" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="rentalDay" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="CompanyInformation" type="tns:CompanyInformation" />
+          <s:element minOccurs="0" maxOccurs="1" name="UserInformation" type="tns:UserInformation" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="CompanyInformation">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="companyID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="companyName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="addressID" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="numberOfCar" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="companyScore" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Address" type="tns:Address" />
+          <s:element minOccurs="0" maxOccurs="1" name="Company" type="tns:Company" />
+          <s:element minOccurs="0" maxOccurs="1" name="RentalInformation" type="tns:ArrayOfRentalInformation" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Address">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="addressID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="province" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="city" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="phoneNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CompanyInformation" type="tns:ArrayOfCompanyInformation" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfCompanyInformation">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="CompanyInformation" nillable="true" type="tns:CompanyInformation" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Company">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="companyID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="companyInfoID" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Car" type="tns:ArrayOfCar" />
+          <s:element minOccurs="0" maxOccurs="1" name="CompanyInformation" type="tns:CompanyInformation" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfCar">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Car" nillable="true" type="tns:Car" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Car">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="carID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="markID" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="modelID" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="companyID" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="rentalStatus" nillable="true" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="CarInformation" type="tns:CarInformation" />
+          <s:element minOccurs="0" maxOccurs="1" name="Company" type="tns:Company" />
+          <s:element minOccurs="0" maxOccurs="1" name="Mark" type="tns:Mark" />
+          <s:element minOccurs="0" maxOccurs="1" name="Model" type="tns:Model" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="CarInformation">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="carID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="carName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ageRequired" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="airBag" nillable="true" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="baggageVolume" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="numberOfSeats" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="dailyRentalPrice" nillable="true" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="hourlyRentalPrice" nillable="true" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" name="Car" type="tns:Car" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Mark">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="markID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="markName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Car" type="tns:ArrayOfCar" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Model">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="modelID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="modelName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Car" type="tns:ArrayOfCar" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="AddResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="Delete">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="Get">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetResult" type="tns:User" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAll">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetAllResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllResult" type="tns:ArrayOfUser" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Update">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="entity" type="tns:User" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateResponse">
+        <s:complexType />
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="AddSoapIn">
+    <wsdl:part name="parameters" element="tns:Add" />
+  </wsdl:message>
+  <wsdl:message name="AddSoapOut">
+    <wsdl:part name="parameters" element="tns:AddResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteSoapIn">
+    <wsdl:part name="parameters" element="tns:Delete" />
+  </wsdl:message>
+  <wsdl:message name="DeleteSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetSoapIn">
+    <wsdl:part name="parameters" element="tns:Get" />
+  </wsdl:message>
+  <wsdl:message name="GetSoapOut">
+    <wsdl:part name="parameters" element="tns:GetResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAll" />
+  </wsdl:message>
+  <wsdl:message name="GetAllSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateSoapIn">
+    <wsdl:part name="parameters" element="tns:Update" />
+  </wsdl:message>
+  <wsdl:message name="UpdateSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateResponse" />
+  </wsdl:message>
+  <wsdl:portType name="UserServiceSoap">
+    <wsdl:operation name="Add">
+      <wsdl:input message="tns:AddSoapIn" />
+      <wsdl:output message="tns:AddSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Delete">
+      <wsdl:input message="tns:DeleteSoapIn" />
+      <wsdl:output message="tns:DeleteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Get">
+      <wsdl:input message="tns:GetSoapIn" />
+      <wsdl:output message="tns:GetSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAll">
+      <wsdl:input message="tns:GetAllSoapIn" />
+      <wsdl:output message="tns:GetAllSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Update">
+      <wsdl:input message="tns:UpdateSoapIn" />
+      <wsdl:output message="tns:UpdateSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="UserServiceSoap" type="tns:UserServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Add">
+      <soap:operation soapAction="http://tempuri.org/Add" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Delete">
+      <soap:operation soapAction="http://tempuri.org/Delete" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get">
+      <soap:operation soapAction="http://tempuri.org/Get" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAll">
+      <soap:operation soapAction="http://tempuri.org/GetAll" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Update">
+      <soap:operation soapAction="http://tempuri.org/Update" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="UserServiceSoap12" type="tns:UserServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Add">
+      <soap12:operation soapAction="http://tempuri.org/Add" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Delete">
+      <soap12:operation soapAction="http://tempuri.org/Delete" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get">
+      <soap12:operation soapAction="http://tempuri.org/Get" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAll">
+      <soap12:operation soapAction="http://tempuri.org/GetAll" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Update">
+      <soap12:operation soapAction="http://tempuri.org/Update" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="UserService">
+    <wsdl:port name="UserServiceSoap" binding="tns:UserServiceSoap">
+      <soap:address location="http://localhost:50245/UserService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="UserServiceSoap12" binding="tns:UserServiceSoap12">
+      <soap12:address location="http://localhost:50245/UserService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
